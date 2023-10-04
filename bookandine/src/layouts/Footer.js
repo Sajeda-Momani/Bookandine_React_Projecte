@@ -17,7 +17,7 @@ function Footer() {
                                                 <div className="logo">
                                                     <h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img
                                                         src="images/ourlogo.png" alt="logo.png"
-                                                        itemprop="image"/></a></h1>
+                                                        itemprop="image" /></a></h1>
                                                 </div>
                                                 <p itemprop="description">Food Ordering is a Premium HTML Template. Best
                                                     choice for your online store. Let purchase it to enjoy now</p>
@@ -76,9 +76,14 @@ function Footer() {
                     </div>
                 </div>
             </footer>
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/bootstrap.min.js"></script>
+            <script src="assets/js/plugins.js"></script>
+            <script src="assets/js/main.js"></script>
         </div>
 
     );
+
 }
 
 export default Footer;
