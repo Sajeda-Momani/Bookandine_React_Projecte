@@ -10,7 +10,7 @@ function NavBar() {
                 <div className="logo">
                     <h1 itemprop="headline">
                         <a href="index-2.html" title="Home" itemprop="url">
-                            <img src='/images/ourlogo.png' alt="ourlogo.png" itemprop="image" width={'200px'} />
+                            <img src='/images/black-logo.png' alt="ourlogo.png" itemprop="image" width={'200px'} />
                         </a>
                     </h1>
                 </div>
