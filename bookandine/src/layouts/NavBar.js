@@ -1,6 +1,5 @@
 import React from 'react';
 import './navbar.css';
-import image from './assets/images/logo2.png';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink } from 'react-router-dom';
 
 function NavBar() {
