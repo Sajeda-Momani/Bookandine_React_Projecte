@@ -66,7 +66,6 @@ function Single() {
     return (
         <>
 
-            <NavBar />
 
             <section>
                 <div className="block gray-bg top-padd30">
@@ -139,7 +138,6 @@ function Single() {
                 </div>
             </section>
 
-            <Footer />
         </>
     );
 }

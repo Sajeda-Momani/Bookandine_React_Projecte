@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './layouts/NavBar';
 import Footer from './layouts/Footer';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink } from 'react-router-dom';
+import Restaurants from './Pages/Restaurants/Restaurants';
 import Home from './Pages/home/Home';
 
 import './App.css';
@@ -15,10 +16,15 @@ function App() {
   return (
     <div>
       <NavBar />
-      
       <Router>
         <Routes>
+
+          <Route path="/restaurants" element={<Restaurants />} />
         <Route path="/" element={<Home />} />
+
+
+        <Route path="/single" element={<Single />} />
+
 
         </Routes>
       </Router>
@@ -30,7 +36,6 @@ function App() {
     <script src="js/main.js"></script>
  
       </Helmet>
-      <Single/>
       {/* <ReviewForm/> */}
       {/* <NavBar />
       <Footer />*/}
