@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Footer() {
+
     return (
 
         <div>
@@ -76,9 +77,11 @@ function Footer() {
                     </div>
                 </div>
             </footer>
+      
         </div>
 
     );
+
 }
 
 export default Footer;

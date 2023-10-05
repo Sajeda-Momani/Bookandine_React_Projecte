@@ -1,6 +1,5 @@
 import React from 'react';
 import './navbar.css';
-import image from './assets/images/logo2.png';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink } from 'react-router-dom';
 
 function NavBar() {
@@ -102,10 +101,7 @@ function NavBar() {
                     </div>
                 </nav>
             </div>
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/bootstrap.min.js"></script>
-            <script src="assets/js/plugins.js"></script>
-            <script src="assets/js/main.js"></script>
+    
         </div>
     );
 }
