@@ -77,7 +77,9 @@ function Article() {
                                     <div className="col-md-4 col-sm-6 col-lg-4" >
                                         <div className="article-dev wow fadeIn" data-wow-delay="0.2s">
                                             <figure>
+                                                <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="">
                                                 <img src={restaurant.heroImgUrl} alt={restaurant.name} style={{ width: '630px', height: '350px' }} />
+                                            </a>
                                             </figure>
                                             <div className="article-data">
                                                 <div className="article-info-meta">
