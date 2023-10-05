@@ -220,8 +220,22 @@ form.dark-red-bg {background-color: #c33332;}
 .less-btm-margin{margin-bottom: 0;}
 .container {
   padding: 0;
-  max-width:1170px;
+  max-width:250px;
 }
+.restaurant-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the column width as needed */
+  gap: 0px; /* Adjust the gap between cards as needed */
+  justify-items: center; /* Center align cards horizontally */
+}
+
+/* Style individual cards */
+.article-dev {
+  width: calc(33.33% - 10px); /* Adjust the width to fit three cards in a row with some spacing */
+  margin-bottom: 20px; /* Add vertical spacing between cards */
+  /* Add any other styling you need for the cards */
+}
+
 .mrg {margin: 0;}
 .mrg > div,
 .mrg > div.masonry,
@@ -6478,13 +6492,15 @@ a.thanks-close:focus {color: #333;}
     display: inline-block;
     margin-top: 30px;
     width: 100%;
+    text-align: center;
+
 }
 .upcoming-event .title1-wrapper {
     margin-bottom: 10px;
 }
 .article-info-meta {
     display: inline-block;
-    padding-right: 13px;
+    padding-right: 50px;
     text-align: right;
     vertical-align: middle;
     width: 30%;
@@ -6494,7 +6510,7 @@ a.thanks-close:focus {color: #333;}
     display: inline-block;
     padding-left: 28px;
     vertical-align: middle;
-    width: 68%;
+    /* width: 68%; */
 }
 .article-info-meta > span {
     display: inline-block;
