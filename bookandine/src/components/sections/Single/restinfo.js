@@ -4,7 +4,6 @@ function RestaurantInfo({address,phone,email,website,position}) {
   return (
   
     <div className="restaurant-info-wrapper"> 
-    <h1>{email}</h1>
       <h3 className="title3" itemprop="headline">
         <span className="sudo-bottom sudo-bg-red">Book</span> This Restaurant Table
       </h3>

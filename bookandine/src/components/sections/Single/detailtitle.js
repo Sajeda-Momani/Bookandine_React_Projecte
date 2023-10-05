@@ -16,17 +16,17 @@ function RestaurantDetailTitle({ openStatus, location, name, description, rate, 
         </div>
       </div>
 
-      <small >{location}</small>
-      <br></br>
-      <h1 itemprop="headline">{name}
-      </h1>
-      <br></br>
+      {/* <small >{location}</small> */}
+      {/* <br></br> */}
+      <h2 itemprop="headline">{name}
+      </h2>
+      {/* <br></br> */}
 
       {/* {restaurantCuisine.map((cuisine) => (
 <tr>
         <td key={cuisine.key}>{cuisine.name}</td></tr>
       ))} */}
-      <br></br>
+      {/* <br></br> */}
 
       <div className="row">
         <div className="col-lg-10"> <small>{description}</small></div>
