@@ -10,6 +10,20 @@ function FeaturedFood() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+// Calculate the index of the first and last item to display on the current page
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+// Slice the filteredRestaurants array to get the items for the current page
+const currentItems = filteredRestaurants.slice(indexOfFirstItem, indexOfLastItem);
+
+// Function to change the current page
+const paginate = (pageNumber) => {
+  setCurrentPage(pageNumber);
+};
+
   const fetchRestaurants = async () => {
     try {
       const response = await axios.get(
@@ -97,7 +111,7 @@ useEffect(() => {
                 <div className="filters-inner style2">
                   <div className="row">
                    
-                    {filteredRestaurants.map((restaurant, index) => (
+                    {currentItems.map((restaurant, index) => (
                       <div
                         key={index}
                         className="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1"
@@ -146,6 +160,20 @@ useEffect(() => {
                         </div>
                       </div>
                     ))}
+                    <div className="pagination">
+                        <button
+                            onClick={() => paginate(currentPage - 1)}
+                            disabled={currentPage === 1}
+                        >
+                            Previous
+                        </button>
+                        <button
+                            onClick={() => paginate(currentPage + 1)}
+                            disabled={indexOfLastItem >= filteredRestaurants.length}
+                        >
+                            Next
+                        </button>
+                    </div>
                   </div>
                 </div>
               </div>
