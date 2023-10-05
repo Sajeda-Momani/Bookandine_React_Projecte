@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Footer() {
+
     return (
 
         <div>
@@ -16,7 +17,7 @@ function Footer() {
                                             <div className="widget about_widget wow fadeIn" data-wow-delay="0.1s">
                                                 <div className="logo">
                                                     <h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img
-                                                        src="images/ourlogo.png" alt="logo.png"
+                                                        src="/images/white-logo.png" alt="logo.png"
                                                         itemprop="image"/></a></h1>
                                                 </div>
                                                 <p itemprop="description">Food Ordering is a Premium HTML Template. Best
@@ -76,9 +77,11 @@ function Footer() {
                     </div>
                 </div>
             </footer>
+      
         </div>
 
     );
+
 }
 
 export default Footer;

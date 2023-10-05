@@ -1,6 +1,5 @@
 import React from 'react';
 import './navbar.css';
-import image from './assets/images/logo2.png';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink } from 'react-router-dom';
 
 function NavBar() {
@@ -10,7 +9,7 @@ function NavBar() {
                 <div className="logo">
                     <h1 itemprop="headline">
                         <a href="index-2.html" title="Home" itemprop="url">
-                            <img src='/images/ourlogo.png' alt="ourlogo.png" itemprop="image" width={'200px'} />
+                            <img src='/images/black-logo.png' alt="ourlogo.png" itemprop="image" width={'200px'} />
                         </a>
                     </h1>
                 </div>
@@ -102,10 +101,7 @@ function NavBar() {
                     </div>
                 </nav>
             </div>
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/bootstrap.min.js"></script>
-            <script src="assets/js/plugins.js"></script>
-            <script src="assets/js/main.js"></script>
+    
         </div>
     );
 }
