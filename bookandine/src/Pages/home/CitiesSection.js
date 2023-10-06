@@ -27,7 +27,7 @@ const CitiesSection = () => {
                   <div className="col-md-4 col-sm-6 col-lg-4">
                     <div className="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                       <div className="popular-dish-thumb">
-                        <Link href={`restaurants/25336960`} title="" itemProp="url">
+                        <Link to={`restaurants/25336960`} title="" itemProp="url">
                           <img
                             src="images/Amman.jpg" style={{ height: '280px', width: '400px' }}
                             alt="popular-dish-img1.jpg"
@@ -38,7 +38,7 @@ const CitiesSection = () => {
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <Link href={`restaurants/25336960`} title="" itemProp="url">
+                          <Link to={`restaurants/25336960`} title="" itemProp="url">
                             Amman
                           </Link>
                         </h4>
@@ -48,7 +48,7 @@ const CitiesSection = () => {
                         
                         <Link
                           className="brd-rd4"
-                          href={`restaurants/25336960`}
+                          to={`restaurants/25336960`}
                           title="Order Now"
                           itemProp="url"
                           style={{
@@ -68,7 +68,7 @@ const CitiesSection = () => {
                   <div className="col-md-4 col-sm-6 col-lg-4">
                     <div className="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                       <div className="popular-dish-thumb">
-                        <Link href={`restaurants/656904`} title="" itemProp="url">
+                        <Link to={`restaurants/656904`} title="" itemProp="url">
                           <img
                             src="images/Irbid.jpg" style={{ height: '280px', width: '400px' }}
                             alt="popular-dish-img1.jpg"
@@ -79,7 +79,7 @@ const CitiesSection = () => {
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <Link href={`restaurants/656904`} title="" itemProp="url">
+                          <Link to={`restaurants/656904`} title="" itemProp="url">
                             Irbid
                           </Link>
                         </h4>
@@ -88,7 +88,7 @@ const CitiesSection = () => {
                         </p>
                         <Link
                           className="brd-rd4"
-                          href={`restaurants/656904`}
+                          to={`restaurants/656904`}
                           title="Order Now"
                           itemProp="url"
                           style={{
@@ -108,7 +108,7 @@ const CitiesSection = () => {
                   <div className="col-md-4 col-sm-6 col-lg-4">
                     <div className="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                       <div className="popular-dish-thumb">
-                        <Link href={`restaurants/293988`} title="" itemProp="url">
+                        <Link to={`restaurants/293988`} title="" itemProp="url">
                           <img
                             src="images/Jerash.jpg"
                             alt="popular-dish-img1.jpg"
@@ -119,7 +119,7 @@ const CitiesSection = () => {
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <Link href={`restaurants/293988`} title="" itemProp="url">
+                          <Link to={`restaurants/293988`} title="" itemProp="url">
                             Jerash
                           </Link>
                         </h4>

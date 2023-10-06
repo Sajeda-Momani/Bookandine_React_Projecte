@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './api.json'
-
+import { useParams } from "react-router-dom";
 function Article() {
     const [restaurants, setRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { id } = useParams();
 
     const apiUrl = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants';
     const headers = {
@@ -22,12 +23,11 @@ function Article() {
         setCurrentPage(pageNumber);
     };
 
-
     // useEffect(() => {
     //     axios
     //         .get(apiUrl, {
     //             params: {
-    //                 locationId: '293986',
+    //                 locationId: id,
     //             },
     //             headers: headers,
     //         })

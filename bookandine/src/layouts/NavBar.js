@@ -1,7 +1,7 @@
 // import React from 'react';
 import './navbar.css';
 import React, {useState} from 'react';
-
+import { useContext } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink } from 'react-router-dom';
 
 function NavBar() {
@@ -17,7 +17,7 @@ function NavBar() {
             <div className="container">
                 <div className="logo">
                     <h1 itemprop="headline">
-                        <a href="index-2.html" title="Home" itemprop="url">
+                        <a to="Home.js" title="Home" itemprop="url">
                             <img src='/images/black-logo.png' alt="ourlogo.png" itemprop="image" width={'200px'} />
                         </a>
                     </h1>
@@ -36,9 +36,9 @@ function NavBar() {
                                     RESTAURANTS
                                 </a>
                                 <ul className="sub-dropdown">
-                                    <li><a href={`restaurants/656904`} title="RESTAURANT 1" itemprop="url">Irbid</a></li>
-                                    <li><a href={`restaurants/25336960`} title="RESTAURANT 2" itemprop="url">Amman</a></li>
-                                    <li><a href={`restaurants/293988`} title="RESTAURANT DETAILS" itemprop="url">Jerash</a></li>
+                                    <li><Link to={`restaurants/656904`} title="RESTAURANT 1" itemprop="url">Irbid</Link></li>
+                                    <li><Link to={`restaurants/25336960`} title="RESTAURANT 2" itemprop="url">Amman</Link></li>
+                                    <li><Link to={`restaurants/293988`} title="RESTAURANT DETAILS" itemprop="url">Jerash</Link></li>
                                 </ul>
                             </li>
                             <li className="menu-item-has-children">
