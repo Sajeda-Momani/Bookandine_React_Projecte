@@ -106,7 +106,7 @@ function Single() {
                                                                     <CustomerReviews  name={restaurantLocation.name}/>
                                                                 </div>
                                                                 <div className="tab-pane fade" id="bookTable">
-                                                                    <BookTable   />
+                                                                    <BookTable  name={restaurantLocation.name}   />
                                                                 </div>
 
                                                                 <div className="tab-pane fade" id="restaurantInfo">
