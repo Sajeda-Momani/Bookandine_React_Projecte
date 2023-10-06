@@ -43,14 +43,12 @@ const Login = () => {
 
     useEffect(() => {
         // eslint-disable-next-line
-
         google.accounts.id.initialize({
             client_id: "653580128748-s2hs2morpdgqck7pg3keeu10d8apjc53.apps.googleusercontent.com",
             callback: handleCallbackResponse
         });
 
         // eslint-disable-next-line
-
         google.accounts.id.renderButton(
             document.getElementById("signInDiv"),
             { theme: "outline", size: "large" }

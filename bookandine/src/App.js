@@ -22,9 +22,9 @@ function App() {
       {/* <PageTitle/> */}
     
       {/* <Register setIsLoggedIn={setIsLoggedIn} /> */}
-      <Login />
+      {/* <Login /> */}
 
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <NavBar />
         <Routes>
 
@@ -35,7 +35,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
-      <Footer /> */}
+      <Footer />
 
     </div>
   );
