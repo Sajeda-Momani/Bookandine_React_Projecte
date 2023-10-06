@@ -8937,9 +8937,34 @@ padding-right: 30px;
   margin-left: 28px;
 }
 
+/* pagination.css */
+
+.pagination {
+  margin-left: 40%;
+  margin-top: 50px;
+}
+
+.pagination button {
+  background-color: #ffba00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination button:hover {
+  background-color: darkgoldenrod;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 .featured-restaurant-box.with-bg .post-meta {
   padding-left: 0;
-}
+}}
 
 .about-feat.text-center>img {
   width: 100%;

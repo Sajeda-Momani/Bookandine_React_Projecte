@@ -8,7 +8,7 @@ function PageTitle() {
                 <div className="page-title-wrapper text-center">
                     <div className="col-md-12 col-sm-12 col-lg-12">
                         <div className="page-title-inner">
-                            <h1 itemprop="headline">Blog Articles</h1>
+                            <h1 itemprop="headline">Restaurant List</h1>
                             <span>A Great Restaurant Website</span>
                         </div>
                     </div>
