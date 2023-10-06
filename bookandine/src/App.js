@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Link, Routes, NavLink, BrowserRouter } 
 import Restaurants from './Pages/Restaurants/Restaurants';
 import Home from './Pages/home/Home';
 import Profile from './Pages/profile/profile';
+import Login from './Pages/Login';
+import Register from './Pages/register';
 
 import PageTitle from './components/sections/Single/search'
 import './App.css';
@@ -19,7 +21,10 @@ function App() {
     <div>
       {/* <PageTitle/> */}
     
-      <BrowserRouter>
+      {/* <Register setIsLoggedIn={setIsLoggedIn} /> */}
+      <Login />
+
+      {/* <BrowserRouter>
         <NavBar />
         <Routes>
 
@@ -30,7 +35,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
-      <Footer />
+      <Footer /> */}
 
     </div>
   );
