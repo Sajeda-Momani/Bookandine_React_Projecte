@@ -27,18 +27,18 @@ const CitiesSection = () => {
                   <div className="col-md-4 col-sm-6 col-lg-4">
                     <div className="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                       <div className="popular-dish-thumb">
-                        <a href="/?locationId=25336960" title="" itemProp="url">
+                        <Link to={`restaurants/25336960`} title="" itemProp="url">
                           <img
-                            src="images/resource/popular-dish-img1.jpg"
+                            src="images/Amman.jpg" style={{ height: '280px', width: '400px' }}
                             alt="popular-dish-img1.jpg"
                             itemProp="image"
                           />
-                        </a>
+                        </Link>
                         
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                        <Link to={`/restaurants/25336960/`} title="" itemProp="url">
+                          <Link to={`restaurants/25336960`} title="" itemProp="url">
                             Amman
                           </Link>
                         </h4>
@@ -46,9 +46,9 @@ const CitiesSection = () => {
                         Discover a world of culinary delights in the heart of the city, where restaurants offer diverse flavors
                         </p>
                         
-                        <a
+                        <Link
                           className="brd-rd4"
-                          href="/?locationId=25336960"
+                          to={`restaurants/25336960`}
                           title="Order Now"
                           itemProp="url"
                           style={{
@@ -60,7 +60,7 @@ const CitiesSection = () => {
                           }}
                         >
                           See Restaurants
-                        </a>
+                        </Link>
                        
                       </div>
                     </div>
@@ -68,27 +68,27 @@ const CitiesSection = () => {
                   <div className="col-md-4 col-sm-6 col-lg-4">
                     <div className="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                       <div className="popular-dish-thumb">
-                        <a href="/?locationId=25336960" title="" itemProp="url">
+                        <Link to={`restaurants/656904`} title="" itemProp="url">
                           <img
-                            src="images/resource/popular-dish-img3.jpg"
+                            src="images/Irbid.jpg" style={{ height: '280px', width: '400px' }}
                             alt="popular-dish-img1.jpg"
                             itemProp="image"
                           />
-                        </a>
+                        </Link>
                         
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <Link to={`/restaurants/656904/`} title="" itemProp="url">
+                          <Link to={`restaurants/656904`} title="" itemProp="url">
                             Irbid
                           </Link>
                         </h4>
                         <p itemProp="description">
                         Savor locally sourced ingredients and regional specialties at charming countryside restaurants                       
                         </p>
-                        <a
+                        <Link
                           className="brd-rd4"
-                          href="/?locationId=25336960"
+                          to={`restaurants/656904`}
                           title="Order Now"
                           itemProp="url"
                           style={{
@@ -100,7 +100,7 @@ const CitiesSection = () => {
                           }}
                         >
                           See Restaurants
-                        </a>
+                        </Link>
                        
                       </div>
                     </div>
@@ -108,27 +108,27 @@ const CitiesSection = () => {
                   <div className="col-md-4 col-sm-6 col-lg-4">
                     <div className="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                       <div className="popular-dish-thumb">
-                        <a href="/?locationId=25336960" title="" itemProp="url">
+                        <Link to={`restaurants/293988`} title="" itemProp="url">
                           <img
-                            src="images/resource/popular-dish-img2.jpg"
+                            src="images/Jerash.jpg"
                             alt="popular-dish-img1.jpg"
-                            itemProp="image"
+                            itemProp="image" style={{ height: '280px', width: '400px' }}
                           />
-                        </a>
+                        </Link>
                         
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                        <Link to={`restaurants/293988`} title="" itemProp="url">
+                          <Link to={`restaurants/293988`} title="" itemProp="url">
                             Jerash
                           </Link>
                         </h4>
                         <p itemProp="description">
                         Experience the charm of countryside dining, where rustic restaurants offer a taste of tradition in picturesque settings                        
                         </p>
-                        <a
+                        <Link
                           className="brd-rd4"
-                          href="/?locationId=25336960"
+                          href={`restaurants/293988`}
                           title="Order Now"
                           itemProp="url"
                           style={{
@@ -140,7 +140,7 @@ const CitiesSection = () => {
                           }}
                         >
                           See Restaurants
-                        </a>
+                        </Link>
                        
                       </div>
                     </div>
