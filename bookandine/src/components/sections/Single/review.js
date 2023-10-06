@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { useParams } from "react-router-dom";
 function CustomerReviews({ name }) {
   const [reviewText, setReviewText] = useState('');
   const [rating, setRating] = useState(4.0);
   const [filteredReviews, setFilteredReviews] = useState([]);
-
+  const { resturantid } = useParams();
+  // console.log({ resturantid });
   const handleSubmit = (e) => {
     e.preventDefault();
     const newReview = {
@@ -41,6 +42,7 @@ function CustomerReviews({ name }) {
 
   return (
     <div className="customer-review-wrapper">
+      
       <h4 className="title3" itemprop="headline">
         <span className="sudo-bottom sudo-bg-red">Customer Reviews</span>
       </h4>

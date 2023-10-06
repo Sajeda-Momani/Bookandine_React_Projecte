@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './api.json'
-
+import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 function Article() {
     const [restaurants, setRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const { categoryid } = useParams();
     const apiUrl = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants';
     const headers = {
         'X-RapidAPI-Key': '8605fd357emsh0d35efc1d69a294p133002jsn39e8b9b2c701',
@@ -78,9 +79,9 @@ function Article() {
                                                         </div>
                                                         <div className="article-meta">
                                                             <h3>
-                                                                <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="">
+                                                                <Link to={`/single/${restaurant.restaurantsId}/${categoryid}`} title="">
                                                                     {restaurant.name}
-                                                                </a>
+                                                                </Link>
                                                             </h3>
 
 

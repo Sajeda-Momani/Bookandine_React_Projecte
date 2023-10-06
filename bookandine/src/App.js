@@ -5,7 +5,7 @@ import Footer from './layouts/Footer';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink } from 'react-router-dom';
 import Restaurants from './Pages/Restaurants/Restaurants';
 import Home from './Pages/home/Home';
-
+import PageTitle from './components/sections/Single/search'
 import './App.css';
 
 // import { Router, Route, Link, Routes, NavLink } from 'react-router-dom';
@@ -15,25 +15,23 @@ import { Helmet } from 'react-helmet';
 function App() {
   return (
     <div>
-      <NavBar />
-      <Router>
+      <PageTitle/>
+      {/* <NavBar /> */}
+      {/* <Router>
         <Routes>
 
-          <Route path="/restaurants" element={<Restaurants />} />
+          <Route path="/restaurants/:categoryid" element={<Restaurants />} />
         <Route path="/" element={<Home />} />
 
-
-        <Route path="/single" element={<Single />} />
-
-
+        <Route path="/single/:resturantid/:categoryid" element={<Single />} />
         </Routes>
       </Router>
-      <Footer />
+      <Footer /> */}
           <Helmet>
-     <script src="js/jquery.min.js"></script>   
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+     {/* <script  src="js/jquery.min.js"></script>   
+    <script  src="js/bootstrap.min.js"></script>
+    <script   src="js/plugins.js"></script>
+    <script  src="js/main.js"></script> */}
  
       </Helmet>
       {/* <ReviewForm/> */}

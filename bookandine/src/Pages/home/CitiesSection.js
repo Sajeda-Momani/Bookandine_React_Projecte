@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './data.json'
+import { Link } from 'react-router-dom';
 
 
 
@@ -37,9 +38,9 @@ const CitiesSection = () => {
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <a href="/?locationId=25336960" title="" itemProp="url">
+                        <Link to={`/restaurants/25336960/`} title="" itemProp="url">
                             Amman
-                          </a>
+                          </Link>
                         </h4>
                         <p itemProp="description">
                         Discover a world of culinary delights in the heart of the city, where restaurants offer diverse flavors
@@ -78,9 +79,9 @@ const CitiesSection = () => {
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <a href="/?locationId=25336960" title="" itemProp="url">
+                          <Link to={`/restaurants/656904/`} title="" itemProp="url">
                             Irbid
-                          </a>
+                          </Link>
                         </h4>
                         <p itemProp="description">
                         Savor locally sourced ingredients and regional specialties at charming countryside restaurants                       
@@ -118,9 +119,9 @@ const CitiesSection = () => {
                       </div>
                       <div className="popular-dish-info">
                         <h4 itemProp="headline">
-                          <a href="/?locationId=25336960" title="" itemProp="url">
+                        <Link to={`restaurants/293988`} title="" itemProp="url">
                             Jerash
-                          </a>
+                          </Link>
                         </h4>
                         <p itemProp="description">
                         Experience the charm of countryside dining, where rustic restaurants offer a taste of tradition in picturesque settings                        

@@ -1,22 +1,27 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../layouts/navbar.css';
 import axios from 'axios';
 
 import RestaurantImageCarousel from '../components/sections/Single/thumb';
 import RestaurantDetailTitle from '../components/sections/Single/detailtitle';
-import DishesList from '../components/sections/Single/menutab';
-import RestaurantGallery from '../components/sections/Single/gallary';
 import CustomerReviews from '../components/sections/Single/review';
 import BookTable from '../components/sections/Single/book';
 import RestaurantInfo from '../components/sections/Single/restinfo';
-import YourOrder from '../components/sections/Single/order';
-import NavBar from '../layouts/NavBar';
-import Footer from '../layouts/Footer';
-
+import { useParams } from "react-router-dom";
+import PageTitle from '../components/sections/Single/search';
 function Single() {
+    const [activeTab, setActiveTab] = useState('bookTable');
+
+    // Function to handle tab click
+    const handleTabClick = (tabId) => {
+        setActiveTab(tabId);
+    };
+    const { resturantid } = useParams();
+    // const { categoryid } = useParams();
+    // console.log({ resturantid });
     const [restaurantLocation, setRestaurantLocation] = useState({});
     const [restaurantHours, setRestaurantHours] = useState({});
-    const [restaurantCuisine, setRestaurantCuisine] = useState({});
+    // const [restaurantCuisine, setRestaurantCuisine] = useState({});
     const [restaurantimage, setRestaurantimage] = useState();
     const [restaurantcontact, setRestaurantcontact] = useState({
         address: '',
@@ -25,6 +30,7 @@ function Single() {
         website: '',
     });
 
+    // console.log({ resturantid });
     const [restaurantmap, setRestaurantmap] = useState({
         latitude: '',
         longitude: '',
@@ -36,11 +42,11 @@ function Single() {
                 method: 'GET',
                 url: 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/getRestaurantDetails',
                 params: {
-                    restaurantsId: 'Restaurant_Review-g293986-d928988-Reviews-Fame_Restaurant-Amman_Amman_Governorate',
+                    restaurantsId: resturantid,
                     currencyCode: 'USD'
                 },
                 headers: {
-                    'X-RapidAPI-Key': '8c056b8a2dmshe4d0847825ab8fcp1905abjsnf3ca565eec6b',
+                    'X-RapidAPI-Key': 'd84ef1490cmsh6cc31cd07e138e3p18b3c2jsn13a9966d65dd',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
                 }
             };
@@ -48,12 +54,12 @@ function Single() {
             try {
                 const response = await axios.request(options);
                 setRestaurantLocation(response.data.data.location);
-                setRestaurantCuisine(response.data.data.location.cuisine);
+                // setRestaurantCuisine(response.data.data.location.cuisine);
                 setRestaurantHours(response.data.data.hours);
                 setRestaurantimage(response.data.data.location.photo.images.large.url);
                 setRestaurantmap(response.data.data.overview.location);
                 setRestaurantcontact(response.data.data.overview.contact);
-                console.log(response.data.data.location);
+                // console.log(response.data.data.location);
 
             } catch (error) {
                 console.error(error);
@@ -62,12 +68,13 @@ function Single() {
 
         fetchData();
     }, []);
-    const position=[restaurantmap.latitude, restaurantmap.longitude];
+    const position = [restaurantmap.latitude, restaurantmap.longitude];
     return (
         <>
 
 
             <section>
+                <PageTitle />
                 <div className="block gray-bg top-padd30">
                     <div className="container">
                         <div className="row">
@@ -85,49 +92,52 @@ function Single() {
                                                             description={restaurantLocation.description}
                                                             rate={restaurantLocation.rating}
                                                             hours={restaurantHours.hoursTodayText} />
+                          
 
-                                                        <div className="restaurant-detail-tabs">
-                                                            <ul className="nav nav-tabs">
-                                                                <li className="active"><a href="#menu" data-toggle="tab"><i className="fa fa-cutlery"></i> Menu</a></li>
-                                                                <li><a href="#gallery" data-toggle="tab"><i className="fa fa-picture-o"></i> Gallery</a></li>
-                                                                <li><a href="#reviews" data-toggle="tab"><i className="fa fa-star"></i> Reviews</a></li>
-                                                                <li><a href="#bookTable" data-toggle="tab"><i className="fa fa-book"></i> Book A Table</a></li>
-                                                                <li><a href="#restaurantInfo" data-toggle="tab"><i className="fa fa-info"></i> Restaurant Info</a></li>
-                                                            </ul>
+                                                            <div className="restaurant-detail-tabs">
+                                                                <ul className="nav nav-tabs">
+                                                                    <li className={activeTab === 'bookTable' ? 'active' : ''}>
+                                                                        <a href="#bookTable" onClick={() => handleTabClick('bookTable')}>
+                                                                            <i className="fa fa-book"></i> Book A Table
+                                                                        </a>
+                                                                    </li>
+                                                                    <li className={activeTab === 'reviews' ? 'active' : ''}>
+                                                                        <a href="#reviews" onClick={() => handleTabClick('reviews')}>
+                                                                            <i className="fa fa-star"></i> Reviews
+                                                                        </a>
+                                                                    </li>
+                                                                    <li className={activeTab === 'restaurantInfo' ? 'active' : ''}>
+                                                                        <a href="#restaurantInfo" onClick={() => handleTabClick('restaurantInfo')}>
+                                                                            <i className="fa fa-info"></i> Restaurant Info
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
 
-                                                            <div className="tab-content">
-                                                                <div className="tab-pane fade in active" id="menu">
-                                                                    <DishesList />
-                                                                </div>
-                                                                <div className="tab-pane fade" id="gallery">
-                                                                    <RestaurantGallery />
-                                                                </div>
-                                                                <div className="tab-pane fade" id="reviews">
-                                                                    <CustomerReviews  name={restaurantLocation.name}/>
-                                                                </div>
-                                                                <div className="tab-pane fade" id="bookTable">
-                                                                    <BookTable   />
-                                                                </div>
+                                                                <div className="tab-content">
+                                                                    <div className={`tab-pane fade ${activeTab === 'bookTable' ? 'in active' : ''}`} id="bookTable">
 
-                                                                <div className="tab-pane fade" id="restaurantInfo">
-
-                                                                    <RestaurantInfo
-                                                                    address={restaurantcontact.address}
-                                                                    phone={restaurantcontact.phone}
-                                                                    email={restaurantcontact.email}
-                                                                    website={restaurantcontact.website}
-                                                                    position={position}
-                                                                    />
-
-                                                                </div>
-
+                                                                        <BookTable />
+                                                                    </div>
+                                                                    <div className={`tab-pane fade ${activeTab === 'reviews' ? 'in active' : ''}`} id="reviews">
+                                                                        <CustomerReviews name={resturantid} />
+                                                                    </div>
+                                                                    <div className={`tab-pane fade ${activeTab === 'restaurantInfo' ? 'in active' : ''}`} id="restaurantInfo">
+                                                                        <RestaurantInfo
+                                                                            address={restaurantcontact.address}
+                                                                            phone={restaurantcontact.phone}
+                                                                            email={restaurantcontact.email}
+                                                                            website={restaurantcontact.website}
+                                                                            position={position}
+                                                                        />
+                                                                    </div>
+                                                                
                                                             </div>
 
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                     </div>

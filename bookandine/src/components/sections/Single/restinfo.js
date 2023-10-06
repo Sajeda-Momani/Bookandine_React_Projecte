@@ -1,24 +1,24 @@
-
+import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-function RestaurantInfo({address,phone,email,website,position}) {
+
+function RestaurantInfo({ address, phone, email, website, position }) {
+
   return (
-  
-    <div className="restaurant-info-wrapper"> 
+    <div className="restaurant-info-wrapper">
+
       <h3 className="title3" itemprop="headline">
         <span className="sudo-bottom sudo-bg-red">Book</span> This Restaurant Table
       </h3>
 
       <div style={{ width: '100%', height: '400px', overflow: 'hidden' }}>
-  <MapContainer center={position} zoom={13} style={{ width: '100%', height: '100vh' }} scrollWheelZoom={false}>
-    <TileLayer
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    />
-    <Marker position={position}>
-
-    </Marker>
-  </MapContainer>
-</div>
+        <MapContainer center={position} zoom={13} style={{ width: '100%', height: '100%' }} scrollWheelZoom={false}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={position}  />
+        </MapContainer>
+      </div>
 
       <ul className="restaurant-info-list">
         <li>

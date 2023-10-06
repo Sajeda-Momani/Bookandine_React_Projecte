@@ -11,7 +11,7 @@ function RestaurantDetailTitle({ openStatus, location, name, description, rate, 
             {hours}
           </small></div>
         <div className='col-lg-2'>
-          <small style={{ color: openStatus === 'OPEN' ? 'green' : 'red', fontSize: '16px' }}>
+          <small style={{ color: openStatus === 'OPEN'||'OPENING' ? 'green' : 'red', fontSize: '16px' }}>
             <small style={{ fontWeight: 'bold' }}> {openStatus}</small>  </small>
         </div>
       </div>
@@ -29,12 +29,12 @@ function RestaurantDetailTitle({ openStatus, location, name, description, rate, 
       {/* <br></br> */}
 
       <div className="row">
-        <div className="col-lg-10"> <small>{description}</small></div>
+        <div className="col-lg-9"> <small>{description}</small></div>
       </div>
 
 
-      <div className="rating-wrapper">
-        <a className="gradient-brd brd-rd2" href="#" title="" itemprop="url">
+      <div className="rating-wrapper" >
+        <a className="gradient-brd brd-rd2 " style={{marginRight:'70px'}} href="#" title="" itemprop="url">
           <i className="fa fa-star"></i> Rate {rate}<i></i>
         </a>
         <div className="rate-share brd-rd5">
