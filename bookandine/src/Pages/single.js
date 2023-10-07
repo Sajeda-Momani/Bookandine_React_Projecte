@@ -47,7 +47,7 @@ function Single() {
                     currencyCode: 'USD'
                 },
                 headers: {
-                    'X-RapidAPI-Key': 'c3f28aa1a3msh87548dbbb73a42dp1024dcjsned5d72cfa3d1',
+                    'X-RapidAPI-Key': 'ed6eb63395mshb78b076e47ee843p1baef3jsn5160cbe1cfc7',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
                 }
             };
@@ -117,10 +117,10 @@ function Single() {
                                                             <div className="tab-content">
                                                                 <div className={`tab-pane fade ${activeTab === 'bookTable' ? 'in active' : ''}`} id="bookTable">
 
-                                                                    <BookTable />
+                                                                    <BookTable name={restaurantLocation.name} />
                                                                 </div>
                                                                 <div className={`tab-pane fade ${activeTab === 'reviews' ? 'in active' : ''}`} id="reviews">
-                                                                    <CustomerReviews name={resturantid} />
+                                                                    <CustomerReviews name={restaurantLocation.name} />
                                                                 </div>
                                                                 <div className={`tab-pane fade ${activeTab === 'restaurantInfo' ? 'in active' : ''}`} id="restaurantInfo">
                                                                     <RestaurantInfo
@@ -132,14 +132,17 @@ function Single() {
                                                                     />
                                                                 </div>
 
+
                                                             </div>
 
-                                                        </div>
-                                                    </div>
 
+                                                        </div>
+
+                                                    </div>
                                                 </div>
 
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -147,6 +150,7 @@ function Single() {
                         </div>
                     </div>
                 </div>
+                {/* </div> */}
             </section>
 
         </>

@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import Swal from 'sweetalert2';
 function CustomerReviews({ name }) {
   const [reviewText, setReviewText] = useState('');
+  const [booking, setBooking] = useState([]);
   const [rating, setRating] = useState(4.0);
   const [filteredReviews, setFilteredReviews] = useState([]);
   const { resturantid } = useParams();
-  // console.log({ resturantid });
+  const user = sessionStorage.getItem('userId');
+  const username = sessionStorage.getItem('userName');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(booking.length>0){
     const newReview = {
-      user_id: 'Razan',
+      name:username,
+      user_id: user,
       stars: rating,
       comment: reviewText,
       resturant_name: name,
@@ -26,23 +32,38 @@ function CustomerReviews({ name }) {
       .then((response) => {
         // Handle the success response if needed
       })
-      .catch((error) => console.error('Error adding review:', error));
+      .catch((error) => console.error('Error adding review:', error));}
+      else{
+        Swal.fire(
+          '',
+          'You should booked first!',
+          'error'
+        )
+      }
   };
 
   useEffect(() => {
-    axios
-      .get('https://651dc93244e393af2d5a51db.mockapi.io/Review')
-      .then((response) => {
-        // Filter the reviews by restaurant name
-        const filtered = response.data.filter((review) => review.resturant_name === name);
+    // Create two Axios requests
+    const request1 = axios.get('https://651dc93244e393af2d5a51db.mockapi.io/Review');
+    const request2 = axios.get('https://651d054444e393af2d5904a6.mockapi.io/bookings');
+
+    Promise.all([request1, request2])
+      .then(([response1, response2]) => {
+        
+        const fillterbook = response2.data.filter((booking) => {
+          return booking.restaurant_name === name && booking.userId === user;
+        });
+        setBooking(fillterbook);
+        const filtered = response1.data.filter((review) => review.resturant_name === name);
         setFilteredReviews(filtered);
+
       })
-      .catch((error) => console.error('Error fetching reviews:', error));
+      .catch((error) => console.error('Error fetching data:', error));
   }, [name]);
 
   return (
     <div className="customer-review-wrapper">
-      
+
       <h4 className="title3" itemprop="headline">
         <span className="sudo-bottom sudo-bg-red">Customer Reviews</span>
       </h4>
@@ -51,7 +72,7 @@ function CustomerReviews({ name }) {
           <li key={index}>
             <div className="comment">
               <div className="comment-info">
-                <h4 itemprop="headline">{review.user_id}</h4>
+                <h4 itemprop="headline">{review.name}</h4>
                 <p itemprop="description">{review.comment}</p>
                 <span className="customer-rating">
                   {[...Array(5)].map((_, i) => (
@@ -79,9 +100,10 @@ function CustomerReviews({ name }) {
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
           ></textarea>
-          <button className="brd-rd2 red-bg" type="submit">
-            POST REVIEW
-          </button>
+          
+            <button className="brd-rd2 red-bg" type="submit">
+              POST REVIEW
+            </button>
           <div className="rate-box">
             <span>RATE US</span>
             <div className="rating-box">

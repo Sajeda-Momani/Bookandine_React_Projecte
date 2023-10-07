@@ -65,7 +65,7 @@ useEffect(() => {
 
     if (restaurants && restaurants.length > 0) {
       if (filterValue === '*') {
-        setFilteredRestaurants(restaurants);
+        setFilteredRestaurants(restaurants.default.data.data);
       } else {
         const filtered = restaurants.filter((restaurant) =>
           restaurant.establishmentTypeAndCuisineTags.includes(filterValue)
@@ -92,7 +92,7 @@ useEffect(() => {
                   </div>
                 </div>
 
-                <ul className="filter-buttons center" >
+                <ul className="filter-buttons center " >
                 {['*', 'International', 'Asian', 'Middle Eastern'].map((item) => (
                  
                     <li key={item} className={filter === item ? 'active' : ''}>
@@ -114,14 +114,14 @@ useEffect(() => {
                     {currentItems.map((restaurant, index) => (
                       <div
                         key={index}
-                        className="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1"
+                        className="col-md-6 col-sm-12 col-lg-6 filter-item filter-item1 active "
                       >
                         <div
-                          className="featured-restaurant-box wow fadeIn"
+                          className="featured-restaurant-box wow fadeIn active"
                           data-wow-delay="0.1s"
                         >
-                          <div className="featured-restaurant-thumb">
-                            <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="" itemProp="url">
+                          <div className="featured-restaurant-thumb active">
+                            <a href={`restaurants/${restaurant.restaurantsId}`} title="" itemProp="url">
                               <img
                                 // className="brd-rd50"
                                 src={restaurant.heroImgUrl}
@@ -135,7 +135,7 @@ useEffect(() => {
                             {restaurant.currentOpenStatusCategory}
                           </span> <br></br>
                             <h4 itemProp="headline">
-                              <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="" itemProp="url">
+                              <a href={`restaurants/${restaurant.restaurantsId}`} title="" itemProp="url">
                                 {restaurant.name}
                               </a>
                             </h4>

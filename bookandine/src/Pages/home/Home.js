@@ -32,9 +32,9 @@ const Home = () => {
                         locationId: selectedLocation,
                     },
                     headers: {
-                        'X-RapidAPI-Key': 'c3f28aa1a3msh87548dbbb73a42dp1024dcjsned5d72cfa3d1',
+                        'X-RapidAPI-Key': 'ed6eb63395mshb78b076e47ee843p1baef3jsn5160cbe1cfc7',
                         'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-                      }
+                    }
                 }
             );
             console.log(selectedLocation);

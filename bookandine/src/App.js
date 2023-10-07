@@ -5,6 +5,10 @@ import Footer from './layouts/Footer';
 import { BrowserRouter as Router, Route, Link, Routes, NavLink, BrowserRouter } from 'react-router-dom';
 import Restaurants from './Pages/Restaurants/Restaurants';
 import Home from './Pages/home/Home';
+import Profile from './Pages/profile/profile';
+import Login from './Pages/Login';
+import Register from './Pages/register';
+
 import PageTitle from './components/sections/Single/search'
 import './App.css';
 
@@ -16,47 +20,22 @@ function App() {
   return (
     <div>
       {/* <PageTitle/> */}
-    
+
+
+      {/* <Login /> */}
+
       <BrowserRouter>
         <NavBar />
         <Routes>
-
+          <Route path="/register" element={<Register />} />
           <Route path="/restaurants/:categoryid" element={<Restaurants />} />
-        <Route path="/" element={<Home />} />
-
-        <Route path="/single/:resturantid" element={<Single />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/single/:resturantid" element={<Single />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
       <Footer />
-          {/* <Helmet> */}
-     {/* <script  src="js/jquery.min.js"></script>   
-    <script  src="js/bootstrap.min.js"></script>
-    <script   src="js/plugins.js"></script>
-    <script  src="js/main.js"></script> */}
- 
-      {/* <BrowserRouter>
-      <NavBar />
-        <Routes>
-
-          <Route path="/restaurants/:id" element={<Restaurants />} />
-          <Route path="/" element={<Home />} />
-
-
-          <Route path="/single" element={<Single />} />
-
-
-        </Routes>
-      </BrowserRouter>
-      <Footer /> */}
-
-      {/* <ReviewForm/> */}
-      {/* <NavBar />
-      <Footer />*/}
-
-      {/* <Routes>
-        <Route path="/menu" element={<DishesList />} />
-        <Route path="/#tab1-3" element={<RestaurantGallery />} />
-        </Routes> */}
 
     </div>
   );

@@ -99,6 +99,23 @@ ul li,
 ol li {
   font-family: "Poppins";
 }
+.custom-title {
+  font-size: 18px !important; /* Adjust the font size as needed */
+}
+
+.custom-content {
+  font-size: 18px !important; /* Adjust the font size as needed */
+}
+.custom-text{
+  font-size:18px !important;
+}
+.custom-confirm-button {
+  font-size:15px !important; 
+  width: 100px;/* Adjust the font size as needed */
+}
+.custom-footer{
+  font-size: 15px;
+}
 .brd-rd4.red-bg:hover {
   background-color: #000000; /* Change background color on hover */
   color: #ffffff; /* Change text color on hover if needed */

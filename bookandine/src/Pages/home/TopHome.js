@@ -49,7 +49,7 @@ const TopHome = () => {
                       <li className="wow bounceIn" data-wow-delay="0.2s" key={index}>
                         <div className="top-restaurant">
 
-                          <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="Restaurant 1" itemprop="url">
+                          <a href={`restaurants/${restaurant.restaurantsId}`} title="Restaurant 1" itemprop="url">
                             <img src={restaurant.squareImgUrl} alt="top-restaurant1.png" itemprop="image" />
                           </a>
                           <h4>{restaurant.name}</h4>
