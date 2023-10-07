@@ -1,32 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function MyReviews() {
+    const [filteredReviews, setFilteredReviews] = useState([]);
+    useEffect(() => {
+        axios
+            .get('https://651dc93244e393af2d5a51db.mockapi.io/Review')
+            .then((response) => {
+                const filtered = response.data.filter((review) => review.user_id === 1);
+                setFilteredReviews(filtered);
+            })
+            .catch((error) => console.error('Error fetching reviews:', error));
+    }, []);
     return (
         <div className="tab-content">
             <div className="tabs-wrp brd-rd5">
                 <h4>MY REVIEWS</h4>
-                <div className="select-wrap-inner">
-                    <div className="select-wrp2">
-                        <select>
-                            <option>Newest Reviews</option>
-                            <option>Newest Reviews</option>
-                            <option>Newest Reviews</option>
-                        </select>
-                    </div>
-                    <div className="select-wrp2">
-                        <select>
-                            <option>Select Date Range</option>
-                            <option>Select Date Range</option>
-                            <option>Select Date Range</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="review-list">
-                    <div className="review-box brd-rd5">
-                        <h4><a href="#" title="">RESTAURANT DEMO</a></h4>
-                        {/* Add review content */}
-                    </div>
-                    {/* Add more review boxes as needed */}
+                <div className="booking-table">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>RESTAURANT NAME</th>
+                                <th>COMMENT</th>
+                                <th>RATING</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredReviews.map((review) => (
+                                <tr key={review.id}>
+                                    <td>
+                                        <h5 style={{ fontSize: '15px' }}>
+                                            {review.resturant_name}
+                                        </h5>
+                                    </td>
+                                    <td style={{ fontSize: '15px' }}>{review.comment}</td>
+                                    <td style={{}}>
+                                        <span className="customer-rating">
+                                            {[...Array(5)].map((_, i) => (
+                                                <i
+                                                    key={i}
+                                                    className="fa fa-star"
+                                                    style={{ color: i < Math.round(review.stars) ? 'yellow' : 'inherit' }}
+                                                ></i>
+                                            ))}
+                                            <span>({review.stars})</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ function CustomerReviews({ name }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newReview = {
-      user_id: 'Razan',
+      user_id: 1,
       stars: rating,
       comment: reviewText,
       resturant_name: name,

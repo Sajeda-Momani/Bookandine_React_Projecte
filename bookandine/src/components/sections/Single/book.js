@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function BookTable({name}) {
-
+    console.log('test');
+    console.log(name);
     const navigate = useNavigate();
     const [bookingData, setBookingData] = useState({
         date: '',
@@ -11,7 +12,7 @@ function BookTable({name}) {
         peopleNumber: '',
     });
     const [successMessage, setSuccessMessage] = useState('');
-
+    const [errorMessage, setErrorMessage] = useState('');
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setBookingData({
@@ -33,15 +34,33 @@ function BookTable({name}) {
         }
 
         const finalBookingData = {
-            restaurant_name: name,
-            date: bookingData.date,
+            restaurant_name: "yyy",
+            date: String(bookingData.date),
             people_number: bookingData.peopleNumber,
             time: String(bookingData.time),
             userId: 1
         };
 
         try {
-            const response = await axios.post('https://651d054444e393af2d5904a6.mockapi.io/users/1/bookings', finalBookingData);
+            console.log(bookingData.date);
+            console.log(finalBookingData.restaurant_name);
+            const availabiltyResponse = await axios.get(`https://651d054444e393af2d5904a6.mockapi.io/bookings?restaurant_name=${finalBookingData.restaurant_name}`);
+            const filteredBookings = availabiltyResponse.data.filter(
+                (booking) => booking.date === finalBookingData.date
+            );
+            // console.log(availabiltyResponse.data.length);
+            if (filteredBookings.length >= 3) {
+                console.error('Restaurant is fully booked for this date.');
+                setErrorMessage('No available tables for this date !');
+                setTimeout(() => {
+                    setErrorMessage('');
+                }, 3000);
+                return;
+            }
+            
+
+
+            const response = await axios.post('https://651d054444e393af2d5904a6.mockapi.io/bookings', finalBookingData);
 
             if (response.status === 201) {
                 setBookingData({
@@ -68,6 +87,7 @@ function BookTable({name}) {
             </h4>
 
             {successMessage && <div className="alert alert-success">{successMessage}</div>}
+            {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
 
             <form onSubmit={handleSubmit}>
@@ -100,9 +120,12 @@ function BookTable({name}) {
                                     placeholder="Select Time"
                                     name='time'
                                     required
+                                    min="19:00"
+                                    max="01:00"
                                     onChange={handleInputChange}
                                 />
                             </div>
+                            <p className="text-muted">Opening hours: 7:00 PM to 1:00 AM</p>
                         </div>
                     </div>
                     <div className="col-md-4">
