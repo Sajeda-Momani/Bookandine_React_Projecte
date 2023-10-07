@@ -12,17 +12,17 @@ function FeaturedFood() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
-// Calculate the index of the first and last item to display on the current page
-const indexOfLastItem = currentPage * itemsPerPage;
-const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // Calculate the index of the first and last item to display on the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-// Slice the filteredRestaurants array to get the items for the current page
-const currentItems = filteredRestaurants.slice(indexOfFirstItem, indexOfLastItem);
+  // Slice the filteredRestaurants array to get the items for the current page
+  const currentItems = filteredRestaurants.slice(indexOfFirstItem, indexOfLastItem);
 
-// Function to change the current page
-const paginate = (pageNumber) => {
-  setCurrentPage(pageNumber);
-};
+  // Function to change the current page
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const fetchRestaurants = async () => {
     try {
@@ -43,29 +43,12 @@ const paginate = (pageNumber) => {
     }
   };
 
-//   useEffect(() => {
-//     fetchRestaurants();
-//   }, []);
-
-useEffect(() => {
-        import('./data.json')
-          .then((response) => {
-            setRestaurants(response.default.data.data); 
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            setError(error);
-            setIsLoading(false);
-          });
-      }, []);
-
-
   const handleFilter = (filterValue) => {
     setFilter(filterValue);
 
     if (restaurants && restaurants.length > 0) {
       if (filterValue === '*') {
-        setFilteredRestaurants(restaurants.default.data.data);
+        setFilteredRestaurants(restaurants);
       } else {
         const filtered = restaurants.filter((restaurant) =>
           restaurant.establishmentTypeAndCuisineTags.includes(filterValue)
@@ -73,10 +56,24 @@ useEffect(() => {
         setFilteredRestaurants(filtered);
       }
     } else {
-      
       setFilteredRestaurants([]);
     }
   };
+
+  useEffect(() => {
+    import('./data.json')
+      .then((response) => {
+        setRestaurants(response.default.data.data);
+        setIsLoading(false);
+        // Set filteredRestaurants with all data on initial load
+        setFilteredRestaurants(response.default.data.data);
+      })
+      .catch((error) => {
+        setError(error);
+        setIsLoading(false);
+      });
+  }, []);
+
 
   return (
     <section id='features'>
@@ -93,8 +90,8 @@ useEffect(() => {
                 </div>
 
                 <ul className="filter-buttons center " >
-                {['*', 'International', 'Asian', 'Middle Eastern'].map((item) => (
-                 
+                  {['*', 'International', 'Asian', 'Middle Eastern'].map((item) => (
+
                     <li key={item} className={filter === item ? 'active' : ''}>
                       <a
                         className="brd-rd30"
@@ -110,7 +107,7 @@ useEffect(() => {
 
                 <div className="filters-inner style2">
                   <div className="row">
-                   
+
                     {currentItems.map((restaurant, index) => (
                       <div
                         key={index}
@@ -131,26 +128,14 @@ useEffect(() => {
                             </a>
                           </div>
                           <div className="featured-restaurant-info">
-                          <span style={{ color: restaurant.currentOpenStatusCategory === 'CLOSED' ? 'red' : 'green' }}>
-                            {restaurant.currentOpenStatusCategory}
-                          </span> <br></br>
+                            <span style={{ color: restaurant.currentOpenStatusCategory === 'CLOSED' ? 'red' : 'green' }}>
+                              {restaurant.currentOpenStatusCategory}
+                            </span> <br></br>
                             <h4 itemProp="headline">
                               <a href={`restaurants/${restaurant.restaurantsId}`} title="" itemProp="url">
                                 {restaurant.name}
                               </a>
                             </h4>
-                            {/* <span className="price">{restaurant.priceTag}</span>
-
-                            <ul className="post-meta">
-                              <li>
-                                <i className="fa fa-check-circle-o"></i> Min order
-                                $50
-                              </li>
-                              <li>
-                                <i className="flaticon-transport"></i>{' '}
-                                {restaurant.distanceTo}
-                              </li>
-                            </ul> */}
                             <span className="post-rate yellow-bg brd-rd2">
                               <i className="fa fa-star-o"></i>{' '}
                               {restaurant.averageRating}
@@ -161,18 +146,18 @@ useEffect(() => {
                       </div>
                     ))}
                     <div className="pagination">
-                        <button
-                            onClick={() => paginate(currentPage - 1)}
-                            disabled={currentPage === 1}
-                        >
-                            Previous
-                        </button>
-                        <button
-                            onClick={() => paginate(currentPage + 1)}
-                            disabled={indexOfLastItem >= filteredRestaurants.length}
-                        >
-                            Next
-                        </button>
+                      <button
+                        onClick={() => paginate(currentPage - 1)}
+                        disabled={currentPage === 1}
+                      >
+                        Previous
+                      </button>
+                      <button
+                        onClick={() => paginate(currentPage + 1)}
+                        disabled={indexOfLastItem >= filteredRestaurants.length}
+                      >
+                        Next
+                      </button>
                     </div>
                   </div>
                 </div>

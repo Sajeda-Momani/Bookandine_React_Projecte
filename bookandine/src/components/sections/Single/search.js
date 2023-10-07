@@ -50,6 +50,7 @@ function PageTitle() {
     return (
         <>
             <section>
+                
                 <form className="restaurant-search-form2 brd-rd30" onSubmit={handleSubmit}>
                     <div className="input-field brd-rd30" style={{ display: 'flex', alignItems: 'center' }}>
                         <input className="brd-rd30 " style={{ marginLeft: '90px' }} type="text" placeholder="RESTAURANT NAME" onChange={(e) => handleNameChange(e.target.value)}

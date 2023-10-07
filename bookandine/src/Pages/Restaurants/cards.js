@@ -9,10 +9,10 @@ function Article() {
     const { categoryid } = useParams();
 
     const apiUrl = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants';
-    const headers = {
-        'X-RapidAPI-Key': '8605fd357emsh0d35efc1d69a294p133002jsn39e8b9b2c701',
-        'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com',
-    };
+    const   headers= {
+        'X-RapidAPI-Key': '5cab2cb444msh4f9a6606fac8057p1903e2jsnb2df7a6c0b22',
+        'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+      }
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -24,37 +24,39 @@ function Article() {
     };
     
 
-    // useEffect(() => {
-    //     axios
-    //         .get(apiUrl, {
-    //             params: {
-    //                 locationId: categoryid,
-    //             },
-    //             headers: headers,
-    //         })
-
-    //         .then((response) => {
-    //             setRestaurants(response.data.data);
-    //             setIsLoading(false);
-    //         })
-
-    //         .catch((error) => {
-    //             setError(error);
-    //             setIsLoading(false);
-    //         });
-    // }, []);
-
     useEffect(() => {
-        import('./api.json')
+        axios
+            .get(apiUrl, {
+                params: {
+                    locationId: categoryid,
+                },
+                headers: headers,
+            })
+
             .then((response) => {
-                setRestaurants(response.default.data.data);
+                console.log(response);
+                const filtered = response.data.data.data.filter((index) => index.name != 'HIGH GARDEN Rooftop' && index.name != "The Jordanian Kitchen" && index.name != "The Lombard Amman");
+                setRestaurants(filtered);
                 setIsLoading(false);
             })
+
             .catch((error) => {
                 setError(error);
                 setIsLoading(false);
             });
     }, []);
+
+    // useEffect(() => {
+    //     import('./api.json')
+    //         .then((response) => {
+    //             setRestaurants(response.default.data.data);
+    //             setIsLoading(false);
+    //         })
+    //         .catch((error) => {
+    //             setError(error);
+    //             setIsLoading(false);
+    //         });
+    // }, []);
 
     if (isLoading) {
         return <div>Loading...</div>;

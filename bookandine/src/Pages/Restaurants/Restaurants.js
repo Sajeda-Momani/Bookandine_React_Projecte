@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import PageTitle from './hero'; 
 import Path from './path'; 
 import Article from './cards'; 
@@ -9,13 +9,16 @@ const Restaurants = () => {
     const [selectedLocation, setSelectedLocation] = useState('25336960');
     const [searchName, setSearchName] = useState('');
     const [isSearching, setIsSearching] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     // Sort the data by averageRating in descending order
 
 
     const handleLocationChange = (value) => {
         setSelectedLocation(value);
     };
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const handleNameChange = (value) => {
         setSearchName(value);
         setIsSearching(false);
@@ -23,6 +26,7 @@ const Restaurants = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         try {
             const response = await axios.get(
                 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants',
@@ -31,9 +35,9 @@ const Restaurants = () => {
                         locationId: selectedLocation,
                     },
                     headers: {
-                        'X-RapidAPI-Key': 'ed6eb63395mshb78b076e47ee843p1baef3jsn5160cbe1cfc7',
+                        'X-RapidAPI-Key': '5cab2cb444msh4f9a6606fac8057p1903e2jsnb2df7a6c0b22',
                         'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-                    }
+                      }
                 }
             );
             console.log(selectedLocation);
@@ -43,6 +47,9 @@ const Restaurants = () => {
             setIsSearching(true);
         } catch (error) {
             console.error(error);
+        }
+        finally {
+            setIsLoading(false); // Set loading state back to false after API request is complete
         }
     }
     return (
@@ -79,7 +86,9 @@ const Restaurants = () => {
                                         </select>
                                     </i>
                                 </div>
-                                <button className="brd-rd4 red-bg" type="submit">SEARCH</button>
+                                <button className="brd-rd4 red-bg" type="submit">
+                                    {isLoading ? 'Loading...' : 'SEARCH'} {/* Show loading text while isLoading is true */}
+                                </button>
                             </form>
                         </div>
                     </div>

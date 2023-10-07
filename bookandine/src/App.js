@@ -8,9 +8,11 @@ import Home from './Pages/home/Home';
 import Profile from './Pages/profile/profile';
 import Login from './Pages/Login';
 import Register from './Pages/register';
-
+import UserProfile from './Pages/profile/profile'
 import PageTitle from './components/sections/Single/search'
 import './App.css';
+import Contact from './contact';
+ import Aboutus from './aboutus';
 
 // import { BrowserRouter, Route, Link, Routes, NavLink } from 'react-router-dom';
 import Single from './Pages/single';
@@ -27,7 +29,10 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
+        <Route path="/contactus" element={<Contact />} />
+        <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/restaurants/:categoryid" element={<Restaurants />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

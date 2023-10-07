@@ -22,6 +22,7 @@ function Single() {
     const [restaurantLocation, setRestaurantLocation] = useState({});
     const [restaurantHours, setRestaurantHours] = useState({});
     // const [restaurantCuisine, setRestaurantCuisine] = useState({});
+    const [isLoading, setIsLoading] = useState(false); 
     const [restaurantimage, setRestaurantimage] = useState();
     const [restaurantcontact, setRestaurantcontact] = useState({
         address: '',
@@ -38,6 +39,7 @@ function Single() {
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true); 
             const options = {
                 method: 'GET',
                 url: 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/getRestaurantDetails',
@@ -47,9 +49,9 @@ function Single() {
                     currencyCode: 'USD'
                 },
                 headers: {
-                    'X-RapidAPI-Key': 'ed6eb63395mshb78b076e47ee843p1baef3jsn5160cbe1cfc7',
+                    'X-RapidAPI-Key': '5cab2cb444msh4f9a6606fac8057p1903e2jsnb2df7a6c0b22',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-                }
+                  }
             };
 
             try {
@@ -65,6 +67,9 @@ function Single() {
             } catch (error) {
                 console.error(error);
             }
+            finally {
+                setIsLoading(false); 
+              }
         };
 
         fetchData();
@@ -75,7 +80,7 @@ function Single() {
 
             {/* <PageTitle /> */}
             <section>
-
+            
                 <div className="block gray-bg top-padd30">
                     <div className="container">
                         <div className="row">
@@ -86,7 +91,7 @@ function Single() {
                                             <div className="col-md-12 col-sm-12 col-lg-12">
                                                 <div className="restaurant-detail-wrapper">
                                                     <div className="restaurant-detail-info">
-                                                        <RestaurantImageCarousel image={restaurantimage} />
+                                                        <RestaurantImageCarousel image={restaurantimage} loading={isLoading}/>
                                                         <RestaurantDetailTitle openStatus={restaurantHours.openStatus}
                                                             location={restaurantLocation.location_string}
                                                             name={restaurantLocation.name}
@@ -150,7 +155,8 @@ function Single() {
                         </div>
                     </div>
                 </div>
-                {/* </div> */}
+               
+                {/* )} */}
             </section>
 
         </>
