@@ -3,11 +3,12 @@ import axios from "axios";
 
 function MyReviews() {
     const [filteredReviews, setFilteredReviews] = useState([]);
+    const user = sessionStorage.getItem('userId');
     useEffect(() => {
         axios
             .get('https://651dc93244e393af2d5a51db.mockapi.io/Review')
             .then((response) => {
-                const filtered = response.data.filter((review) => review.user_id === 1);
+                const filtered = response.data.filter((review) => review.user_id === user);
                 setFilteredReviews(filtered);
             })
             .catch((error) => console.error('Error fetching reviews:', error));

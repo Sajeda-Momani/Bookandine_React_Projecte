@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 function MyBookings() {
-
+    const user = sessionStorage.getItem('userId');
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
@@ -9,7 +9,7 @@ function MyBookings() {
         axios.get("https://651d054444e393af2d5904a6.mockapi.io/bookings")
             .then((response) => {
                 // Filter bookings for the current user (userId === 1)
-                const userBookings = response.data.filter((booking) => booking.userId === 1);
+                const userBookings = response.data.filter((booking) => booking.userId === user);
                 setBookings(userBookings);
             })
             .catch((error) => {
