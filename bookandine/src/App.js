@@ -24,7 +24,7 @@ function App() {
           <Route path="/restaurants/:categoryid" element={<Restaurants />} />
         <Route path="/" element={<Home />} />
 
-        <Route path="/single/:resturantid/:categoryid" element={<Single />} />
+        <Route path="/single/:resturantid" element={<Single />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -41,12 +41,13 @@ function Single() {
             const options = {
                 method: 'GET',
                 url: 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/getRestaurantDetails',
+
                 params: {
                     restaurantsId: resturantid,
                     currencyCode: 'USD'
                 },
                 headers: {
-                    'X-RapidAPI-Key': 'd84ef1490cmsh6cc31cd07e138e3p18b3c2jsn13a9966d65dd',
+                    'X-RapidAPI-Key': 'c3f28aa1a3msh87548dbbb73a42dp1024dcjsned5d72cfa3d1',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
                 }
             };
@@ -56,7 +57,7 @@ function Single() {
                 setRestaurantLocation(response.data.data.location);
                 // setRestaurantCuisine(response.data.data.location.cuisine);
                 setRestaurantHours(response.data.data.hours);
-                setRestaurantimage(response.data.data.location.photo.images.large.url);
+                setRestaurantimage(response.data.data.location.photo.images.original.url);
                 setRestaurantmap(response.data.data.overview.location);
                 setRestaurantcontact(response.data.data.overview.contact);
                 // console.log(response.data.data.location);
@@ -72,9 +73,9 @@ function Single() {
     return (
         <>
 
-
+            {/* <PageTitle /> */}
             <section>
-                <PageTitle />
+
                 <div className="block gray-bg top-padd30">
                     <div className="container">
                         <div className="row">
@@ -92,45 +93,45 @@ function Single() {
                                                             description={restaurantLocation.description}
                                                             rate={restaurantLocation.rating}
                                                             hours={restaurantHours.hoursTodayText} />
-                          
 
-                                                            <div className="restaurant-detail-tabs">
-                                                                <ul className="nav nav-tabs">
-                                                                    <li className={activeTab === 'bookTable' ? 'active' : ''}>
-                                                                        <a href="#bookTable" onClick={() => handleTabClick('bookTable')}>
-                                                                            <i className="fa fa-book"></i> Book A Table
-                                                                        </a>
-                                                                    </li>
-                                                                    <li className={activeTab === 'reviews' ? 'active' : ''}>
-                                                                        <a href="#reviews" onClick={() => handleTabClick('reviews')}>
-                                                                            <i className="fa fa-star"></i> Reviews
-                                                                        </a>
-                                                                    </li>
-                                                                    <li className={activeTab === 'restaurantInfo' ? 'active' : ''}>
-                                                                        <a href="#restaurantInfo" onClick={() => handleTabClick('restaurantInfo')}>
-                                                                            <i className="fa fa-info"></i> Restaurant Info
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
 
-                                                                <div className="tab-content">
-                                                                    <div className={`tab-pane fade ${activeTab === 'bookTable' ? 'in active' : ''}`} id="bookTable">
+                                                        <div className="restaurant-detail-tabs">
+                                                            <ul className="nav nav-tabs">
+                                                                <li className={activeTab === 'bookTable' ? 'active' : ''}>
+                                                                    <a href="#bookTable" onClick={() => handleTabClick('bookTable')}>
+                                                                        <i className="fa fa-book"></i> Book A Table
+                                                                    </a>
+                                                                </li>
+                                                                <li className={activeTab === 'reviews' ? 'active' : ''}>
+                                                                    <a href="#reviews" onClick={() => handleTabClick('reviews')}>
+                                                                        <i className="fa fa-star"></i> Reviews
+                                                                    </a>
+                                                                </li>
+                                                                <li className={activeTab === 'restaurantInfo' ? 'active' : ''}>
+                                                                    <a href="#restaurantInfo" onClick={() => handleTabClick('restaurantInfo')}>
+                                                                        <i className="fa fa-info"></i> Restaurant Info
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
 
-                                                                        <BookTable />
-                                                                    </div>
-                                                                    <div className={`tab-pane fade ${activeTab === 'reviews' ? 'in active' : ''}`} id="reviews">
-                                                                        <CustomerReviews name={resturantid} />
-                                                                    </div>
-                                                                    <div className={`tab-pane fade ${activeTab === 'restaurantInfo' ? 'in active' : ''}`} id="restaurantInfo">
-                                                                        <RestaurantInfo
-                                                                            address={restaurantcontact.address}
-                                                                            phone={restaurantcontact.phone}
-                                                                            email={restaurantcontact.email}
-                                                                            website={restaurantcontact.website}
-                                                                            position={position}
-                                                                        />
-                                                                    </div>
-                                                                
+                                                            <div className="tab-content">
+                                                                <div className={`tab-pane fade ${activeTab === 'bookTable' ? 'in active' : ''}`} id="bookTable">
+
+                                                                    <BookTable />
+                                                                </div>
+                                                                <div className={`tab-pane fade ${activeTab === 'reviews' ? 'in active' : ''}`} id="reviews">
+                                                                    <CustomerReviews name={resturantid} />
+                                                                </div>
+                                                                <div className={`tab-pane fade ${activeTab === 'restaurantInfo' ? 'in active' : ''}`} id="restaurantInfo">
+                                                                    <RestaurantInfo
+                                                                        address={restaurantcontact.address}
+                                                                        phone={restaurantcontact.phone}
+                                                                        email={restaurantcontact.email}
+                                                                        website={restaurantcontact.website}
+                                                                        position={position}
+                                                                    />
+                                                                </div>
+
                                                             </div>
 
                                                         </div>

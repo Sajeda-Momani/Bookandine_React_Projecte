@@ -1,128 +1,72 @@
-import React, { useState, useEffect } from 'react';
+
 import './data.json'
-
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 const TopHome = () => {
-    const [restaurantData, setRestaurantData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-  
-    useEffect(() => {
-        import('./data.json')
-          .then((response) => {
-            setRestaurantData(response.default.data.data); 
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            setError(error);
-            setIsLoading(false);
-          });
-      }, []);
+  const [restaurantData, setRestaurantData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+   const sortedData = restaurantData.sort((a, b) => b.averageRating - a.averageRating); 
+   const top6Restaurants = sortedData.slice(0, 6);
+  const [filterData, setFilterData] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState('25336960');
+  const [searchName, setSearchName] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
-  
-    // Ensure that restaurantData is not empty before proceeding
-    if (restaurantData.length === 0) {
-      return <div>Loading...</div>;
-    }
-  
-    // Sort the data by averageRating in descending order
-    const sortedData = restaurantData.sort((a, b) => b.averageRating - a.averageRating);
-  
-    // Select the top 6 restaurants
-    const top6Restaurants = sortedData.slice(0, 6);
-  
+
+  useEffect(() => {
+    import('./data.json')
+      .then((response) => {
+        setRestaurantData(response.default.data.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setIsLoading(false);
+      });
+  }, []);
+  if (restaurantData.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+
   return (
     <>
+  
+   
 
-      <section>
-        <div className="block blackish opac50">
-          <div className="fixed-bg" style={{ backgroundImage: 'url(images/parallax2.jpg)' }}></div>
-          <div className="restaurant-searching style2 text-center">
-            <div className="restaurant-searching-inner">
-              <span>Different <i>Restaurants</i> </span>
-              <h2 itemProp="headline">Book Now & Dine</h2>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* Top Rating */}
+          <section>
+        <div className="block no-padding overlape-45">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 col-sm-12 col-lg-12">
+                <div className="top-restaurants-wrapper">
+                  <ul className="restaurants-wrapper style2">
+                    {/* <ul> */}
+                    {top6Restaurants.map((restaurant, index) => (
 
-   {/* Top Rating */}
-      <section>
-      <div className="block no-padding overlape-45">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-sm-12 col-lg-12">
-              <div className="top-restaurants-wrapper">
-                <ul className="restaurants-wrapper style2">
-                {/* <ul> */}
-        {top6Restaurants.map((restaurant, index) => (
+                      <li className="wow bounceIn" data-wow-delay="0.2s" key={index}>
+                        <div className="top-restaurant">
 
-          <li className="wow bounceIn" data-wow-delay="0.2s"key={index}>
-          <div className="top-restaurant">
-          
-            <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="Restaurant 1" itemprop="url">
-              <img src={restaurant.squareImgUrl} alt="top-restaurant1.png" itemprop="image" />
-            </a>
-            <h4>{restaurant.name}</h4>
-            <p>Average Rating: {restaurant.averageRating}</p>
+                          <a href={`/?restaurantId=${restaurant.restaurantsId}`} title="Restaurant 1" itemprop="url">
+                            <img src={restaurant.squareImgUrl} alt="top-restaurant1.png" itemprop="image" />
+                          </a>
+                          <h4>{restaurant.name}</h4>
+                          <p>Average Rating: {restaurant.averageRating}</p>
 
-          </div>
-        </li>
-        ))}
-      {/* </ul> */}
-                  {/* <li className="wow bounceIn" data-wow-delay="0.2s">
-                    <div className="top-restaurant">
-                      <a className="brd-rd50" href="#" title="Restaurant 1" itemprop="url">
-                        <img src="images/resource/top-restaurant1.png" alt="top-restaurant1.png" itemprop="image" />
-                      </a>
-                    </div>
-                  </li>
-                  <li className="wow bounceIn" data-wow-delay="0.4s">
-                    <div className="top-restaurant">
-                      <a className="brd-rd50" href="#" title="Restaurant 2" itemprop="url">
-                        <img src="images/resource/top-restaurant2.png" alt="top-restaurant2.png" itemprop="image" />
-                      </a>
-                    </div>
-                  </li>
-                  <li className="wow bounceIn" data-wow-delay="0.6s">
-                    <div className="top-restaurant">
-                      <a className="brd-rd50" href="#" title="Restaurant 3" itemprop="url">
-                        <img src="images/resource/top-restaurant3.png" alt="top-restaurant3.png" itemprop="image" />
-                      </a>
-                    </div>
-                  </li>
-                  <li className="wow bounceIn" data-wow-delay="0.8s">
-                    <div className="top-restaurant">
-                      <a className="brd-rd50" href="#" title="Restaurant 4" itemprop="url">
-                        <img src="images/resource/top-restaurant4.png" alt="top-restaurant4.png" itemprop="image" />
-                      </a>
-                    </div>
-                  </li>
-                  <li className="wow bounceIn" data-wow-delay="1s">
-                    <div className="top-restaurant">
-                      <a className="brd-rd50" href="#" title="Restaurant 5" itemprop="url">
-                        <img src="images/resource/top-restaurant5.png" alt="top-restaurant5.png" itemprop="image" />
-                      </a>
-                    </div>
-                  </li>
-                  <li className="wow bounceIn" data-wow-delay="1.2s">
-                    <div className="top-restaurant">
-                      <a className="brd-rd50" href="#" title="Restaurant 6" itemprop="url">
-                        <img src="images/resource/top-restaurant6.png" alt="top-restaurant6.png" itemprop="image" />
-                      </a>
-                    </div>
-                  </li> */}
-                </ul>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-     
-      <section>
-        <div className="block remove-bottom">
+      </section>
+          <section>
+          <div className="block remove-bottom">
           <div className="container">
             <div className="row">
               <div className="welcome-sec">
@@ -151,9 +95,9 @@ const TopHome = () => {
             </div>
           </div>
         </div>
-      </section>
+          </section>
+        </>
       
-    </>
   );
 }
 
