@@ -25,10 +25,10 @@ function BookTable({name}) {
         e.preventDefault();
 
 
-        // const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-        const isLoggedIn = true;
+        const isLoggedIn = sessionStorage.getItem('userId');
+        // const isLoggedIn = true;
 
-        if (isLoggedIn == false) {
+        if (isLoggedIn == null) {
             navigate('/login');
             return;
         }

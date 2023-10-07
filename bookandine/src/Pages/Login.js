@@ -5,9 +5,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { useParams, useNavigate, Navigate  } from "react-router-dom";
+
 
 const Login = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState({});
+    // const [user2, setUser2] = useState([]);
     const [state, setState] = useState({
         email: '',
         password: '',
@@ -66,30 +70,39 @@ const Login = () => {
     const handleOnSubmit = async (evt) => {
         evt.preventDefault();
 
-        try {
-            const response = await axios.get(
-                `https://651d054444e393af2d5904a6.mockapi.io/users?email=${state.email}&password=${state.password}`
-            );
+        // try {
+        await axios.get(
+            `https://651d054444e393af2d5904a6.mockapi.io/users?email=${state.email}`
+        ).then((response) => {
 
-            const user = response.data;
+            // const user = response.data;
+            // setUser2(response.data);
+            // console.log(user2.password);
+            // console.log(user2.email);
+            console.log(state.password);
+            console.log(response.data[0].password);
 
-            if (user.length > 0) {
-                alert('Login successful!');
+            if (response.data[0].password == state.password) {
+                // alert('Login successful!');
                 setIsLoggedIn(true);
-                sessionStorage.setItem('userId', user[0].id);
-                sessionStorage.setItem('userName', user[0].name);
+                sessionStorage.setItem('userId', response.data[0].id);
+                sessionStorage.setItem('userName', response.data[0].name);
                 console.log(sessionStorage.getItem('userId'));
+                navigate(-1);
             } else {
                 alert('Login failed. Please check your credentials.');
             }
-        } catch (error) {
-            alert('Login failed.');
-        }
-
-        setState({
-            email: '',
-            password: '',
         });
+
+
+        // } catch (error) {
+        //     alert('Login failed.');
+        // }
+
+        // setState({
+        //     email: '',
+        //     password: '',
+        // });
     };
 
     return (

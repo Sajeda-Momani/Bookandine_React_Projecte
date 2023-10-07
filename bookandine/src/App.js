@@ -20,8 +20,8 @@ function App() {
   return (
     <div>
       {/* <PageTitle/> */}
-    
-      {/* <Register setIsLoggedIn={setIsLoggedIn} /> */}
+
+      {/* <Register /> */}
       {/* <Login /> */}
 
       <BrowserRouter>
@@ -29,10 +29,10 @@ function App() {
         <Routes>
 
           <Route path="/restaurants/:categoryid" element={<Restaurants />} />
-        <Route path="/" element={<Home />} />
-
-        <Route path="/single/:resturantid/:categoryid" element={<Single />} />
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/single/:resturantid/:categoryid" element={<Single />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
       <Footer />
