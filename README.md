@@ -1,2 +1,11 @@
 # Bookandine_React_Projecte
-Welcome to Bookandine, your one-stop solution for hassle-free bookings without the need for a database. Our cutting-edge Single Page Application (SPA) built with React connects you with external APIs to make booking services easier than ever before.
+Welcome to Bookandine, your go-to platform for effortless restaurant reservations. We simplify dining through our seamless React.js-based web app, offering a dynamic single-page experience. Utilizing custom APIs, we provide real-time restaurant information, ensuring uninterrupted browsing. Join us in redefining dining, where discovering, booking, and relishing culinary adventures are just a click away.
+
+
+# Trello_Link
+https://trello.com/b/Ox9c5tmy/reacte-js-project
+
+
+# Wireframe_and_Mockup
+
+
