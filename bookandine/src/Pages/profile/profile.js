@@ -17,9 +17,10 @@ function UserProfile() {
         phone: '',
     });
     const [loading, setLoading] = useState(true);
+    const user_id = sessionStorage.getItem('userId');
 
     useEffect(() => {
-        axios.get('https://651d054444e393af2d5904a6.mockapi.io/users/1')
+        axios.get(`https://651d054444e393af2d5904a6.mockapi.io/users/${user_id}`)
             .then(response => {
                 setUser(response.data);
                 setLoading(false);
