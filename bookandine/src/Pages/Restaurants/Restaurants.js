@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from 'react';
-import PageTitle from './hero'; 
-import Path from './path'; 
-import Article from './cards'; 
+import React, { useState, useEffect } from 'react';
+import PageTitle from './hero';
+import Path from './path';
+import Article from './cards';
 import image from '../../assets/images/topbg.jpg';
 import axios from 'axios';
 const Restaurants = () => {
@@ -35,7 +35,7 @@ const Restaurants = () => {
                         locationId: selectedLocation,
                     },
                     headers: {
-                        'X-RapidAPI-Key': '5cab2cb444msh4f9a6606fac8057p1903e2jsnb2df7a6c0b22',
+                        'X-RapidAPI-Key': 'c4e3bb83a1msh60860c0732d14a7p166b02jsn209bb633e889',
                         'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
                       }
                 }
@@ -55,17 +55,17 @@ const Restaurants = () => {
     return (
         <div>
             <section>
-            <div className="block">
-                <div className="fixed-bg" style={{ backgroundImage: `url(${image})`}}></div>
-                <div className="page-title-wrapper text-center">
-                    <div className="col-md-12 col-sm-12 col-lg-12">
-                        <div className="page-title-inner">
-                            <h1 itemprop="headline">Restaurants</h1>
-                            
+                <div className="block">
+                    <div className="fixed-bg" style={{ backgroundImage: `url(${image})` }}></div>
+                    <div className="page-title-wrapper text-center">
+                        <div className="col-md-12 col-sm-12 col-lg-12">
+                            <div className="page-title-inner">
+                                <h1 itemprop="headline">Restaurants</h1>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="restaurant-searching style2 text-center">
+                    <div className="restaurant-searching style2 text-center">
                         <div className="restaurant-searching-inner">
                             <span>Different <i>Restaurants</i> </span>
                             <h2 itemProp="headline">Book Now & Dine</h2>
@@ -92,9 +92,9 @@ const Restaurants = () => {
                             </form>
                         </div>
                     </div>
-            </div>
-        </section>
-        {isSearching &&(searchName!= '')  ? (
+                </div>
+            </section>
+            {isSearching && (searchName != '') ? (
                 <section className="row" style={{ marginBottom: '120px', marginLeft: '30px', marginRight: '30px' }}>
                     {filterData.map((restaurant) => (
 
@@ -140,8 +140,8 @@ const Restaurants = () => {
                     ))}
                 </section>
             ) : <>
-            <Path />
-            <Article /></>}
+                <Path />
+                <Article /></>}
         </div>
     );
 }

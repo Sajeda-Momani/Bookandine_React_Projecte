@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
 import './Login.css';
-import { Link } from "react-router-dom";
+import { Link,Navigate,useNavigate } from "react-router-dom";
 import image from '../assets/images/Coffee shop-amico.png';
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
 
 function Register({ setIsLoggedIn }) {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     name: "",
     email: "",
@@ -46,7 +47,7 @@ function Register({ setIsLoggedIn }) {
         state
       );
 
-      alert(`User registered successfully with ID: ${response.data.id}`);
+      // alert(`User registered successfully with ID: ${response.data.id}`);
       setIsLoggedIn(true);
 
       setState({
@@ -55,10 +56,11 @@ function Register({ setIsLoggedIn }) {
         password: "",
         password_confirmation: "",
       });
+    
     } catch (error) {
       console.error("Error registering user:", error);
       alert("An error occurred while registering. Please try again later.");
-    }
+    }  navigate(-1);
   };
 
   return (
