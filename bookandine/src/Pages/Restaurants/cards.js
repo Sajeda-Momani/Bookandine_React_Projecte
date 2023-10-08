@@ -9,8 +9,8 @@ function Article() {
     const { categoryid } = useParams();
 
     const apiUrl = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants';
-    const   headers= {
-        'X-RapidAPI-Key': '5cab2cb444msh4f9a6606fac8057p1903e2jsnb2df7a6c0b22',
+    const headers= {
+        'X-RapidAPI-Key': 'c4e3bb83a1msh60860c0732d14a7p166b02jsn209bb633e889',
         'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
       }
 
@@ -22,7 +22,7 @@ function Article() {
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-    
+
 
     useEffect(() => {
         axios
@@ -116,21 +116,21 @@ function Article() {
                     </div>
 
                 ))}<div className="pagination" style={{ marginBottom: '50px' }}>
-                <button
-                    onClick={() => paginate(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    Previous
-                </button>
-                <button
-                    onClick={() => paginate(currentPage + 1)}
-                    disabled={indexOfLastItem >= restaurants.length}
-                >
-                    Next
-                </button>
-            </div>
+                    <button
+                        onClick={() => paginate(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        Previous
+                    </button>
+                    <button
+                        onClick={() => paginate(currentPage + 1)}
+                        disabled={indexOfLastItem >= restaurants.length}
+                    >
+                        Next
+                    </button>
+                </div>
             </section>
-            
+
         </>
     );
 }
